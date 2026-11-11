@@ -1,0 +1,27 @@
+#include "platform.h"
+#include "xil_printf.h"
+
+int main(void)
+{
+    int count = 0;
+
+    init_platform();
+    xil_printf("Uppercase echo ready\r\n");
+
+    while (1) {
+        char c = inbyte();
+
+        if (c == '\r' || c == '\n') {
+            continue;
+        }
+
+        char upper = c;
+        if (c >= 'a' && c <= 'z') {
+            upper = c - 'a' + 'A';
+        }
+
+        count++;
+        xil_printf("Received: %c | Uppercase: %c | Count: %d\r\n",
+                   c, upper, count);
+    }
+}
