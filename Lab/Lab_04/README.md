@@ -1,3 +1,6 @@
+## Terminal Output — Partial Reconfiguration
+
+```text
 loaded: RM A (pass-through)   in=0201 out=0201
 loaded: RM A (pass-through)   in=0202 out=0202
 loaded: RM A (pass-through)   in=0203 out=0203
@@ -195,3 +198,4 @@ loaded: RM C (swap bytes)   in=038D out=8D03
 loaded: RM C (swap bytes)   in=038E out=8E03
 loaded: RM C (swap bytes)   in=038F out=8F03
 loaded: RM C (swap bytes)   in=0390 out=9003
+```
