@@ -1,3 +1,39 @@
+## Questions and Observations
+
+### 1. How large is the full bitstream and how large are the partial ones?
+
+| Bitstream | Size (bytes) |
+|---|---:|
+| Full bitstream (top.bit) | 3,825,983 |
+| RM A partial bitstream | 630,900 |
+| RM B partial bitstream | 630,900 |
+| RM C partial bitstream | 630,900 |
+
+Each partial bitstream is approximately 83.5% smaller than the full bitstream because it only configures the reconfigurable region of the FPGA.
+
+### 2. Why do the three partial bitstreams have the same size?
+
+All three modules occupy the same Pblock and use the same number of configuration frames. Therefore, their partial bitstreams have identical file sizes, even though their logical functions are different.
+
+### 3. What happened to the terminal output during the swap?
+
+During partial reconfiguration, the terminal temporarily displayed "unknown" module identification and unexpected output values.
+
+After reconfiguration, the terminal correctly identified the newly loaded module. The counter continued running without restarting.
+
+### 4. Why was the MicroBlaze not affected?
+
+The MicroBlaze processor belongs to the static region of the FPGA. Partial reconfiguration modifies only the designated reconfigurable partition, allowing the processor and its software to continue running.
+
+### 5. When would you not use reconfiguration?
+
+Partial reconfiguration may not be suitable when:
+
+- All hardware functions must operate simultaneously.
+- Reconfiguration time is unacceptable for real-time requirements.
+- Sufficient FPGA resources are available for a static design.
+- Additional design complexity and implementation effort outweigh the benefits.
+
 ## Terminal Output — Partial Reconfiguration
 
 ```text
